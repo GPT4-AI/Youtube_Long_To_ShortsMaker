@@ -1,6 +1,10 @@
 # Youtube Long To ShortsMaker
 Youtube Long To Shorts Maker
 
+![image](https://github.com/user-attachments/assets/fd907e88-7b66-4a6e-b560-b4d917ec9849)
+
+
+
 Youtube Long To ShortsMake is a Windows application for generating short clips from a video file. It allows users to:
 - Select a video file from their computer.
 - Download a video from YouTube.
