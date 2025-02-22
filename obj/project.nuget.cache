@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "4OAYG79rgc0pCMHFTSz+pbHgrU79j6H1oHLkXB5zPePyiSx8grli9+wOgZpJnjSrz/oc2I8kCgRSPJNeLehAJQ==",
+  "success": true,
+  "projectFilePath": "E:\\Youtube00\\ShortsMaker.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\brahim.ti\\.nuget\\packages\\ffmpegcore\\5.1.0\\ffmpegcore.5.1.0.nupkg.sha512",
+    "C:\\Users\\brahim.ti\\.nuget\\packages\\instances\\3.0.0\\instances.3.0.0.nupkg.sha512",
+    "C:\\Users\\brahim.ti\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\brahim.ti\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
