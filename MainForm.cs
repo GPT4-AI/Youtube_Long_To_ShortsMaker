@@ -4,14 +4,26 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Drawing;
+using MaterialSkin;
+using MaterialSkin.Controls;
+using System.Windows.Controls;
 
 namespace ShortsMaker
 {
-    public partial class MainForm : Form
+    public partial class MainForm : MaterialForm
     {
         public MainForm()
         {
             InitializeComponent();
+
+            // Initialize MaterialSkinManager
+            var skinManager = MaterialSkinManager.Instance;
+            skinManager.AddFormToManage(this);
+            skinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            skinManager.ColorScheme = new ColorScheme(
+                Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500,
+                Accent.LightBlue200, TextShade.WHITE);
         }
 
         private void btnBrowseVideo_Click(object sender, EventArgs e)
@@ -99,36 +111,43 @@ namespace ShortsMaker
         private void btnGenerateClips_Click(object sender, EventArgs e)
         {
             string filePath = txtVideoPath.Text;
-            int amountOfClips = int.Parse(txtClipsAmount.Text);
-            string outroPath = txtOutroPath.Text;
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("Video file not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int amountOfClips;
+            if (!int.TryParse(txtClipsAmount.Text, out amountOfClips) || amountOfClips <= 0)
+            {
+                MessageBox.Show("Enter a valid number of clips!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             string outputDirectory = Path.GetDirectoryName(filePath);
             string outputExtension = Path.GetExtension(filePath);
-            int interval = 50;
+            int interval = 50; // Clip length in seconds
 
             var rand = new Random();
             var startTimes = Enumerable.Range(0, (int)Math.Ceiling(GetVideoDuration(filePath) / interval))
                                        .OrderBy(x => rand.Next())
                                        .Select(x => x * interval)
+                                       .Take(amountOfClips)
                                        .ToList();
-            startTimes.Add(int.MaxValue);
 
-            for (int i = 0; i < startTimes.Count - 1; i++)
+            foreach (var startTime in startTimes)
             {
-                if (i < amountOfClips)
-                {
-                    string outputFile = Path.Combine(outputDirectory, $"{startTimes[i] / 60}_{i}{outputExtension}");
-                    SplitVideo(filePath, outputFile, startTimes[i], interval); // Remove outroPath
-                }
+                string outputFile = Path.Combine(outputDirectory, $"{startTime / 60}_clip{outputExtension}");
+                SplitVideo(filePath, outputFile, startTime, interval);
             }
 
-            MessageBox.Show("Clips generated successfully!");
+            MessageBox.Show("Clips generated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Log("Clips generated successfully.");
         }
 
         private double GetVideoDuration(string filePath)
         {
-            string ffprobePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ffprobe.exe");
+            string ffprobePath = "ffprobe";
 
             var process = new Process
             {
@@ -150,22 +169,11 @@ namespace ShortsMaker
 
             if (process.ExitCode != 0)
             {
-                MessageBox.Show($"Error in ffprobe:\n{error}", "FFprobe Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log("FFprobe error: " + error);
-                return 0; // Handle the error appropriately
+                return 0;
             }
 
-            if (double.TryParse(output, NumberStyles.Float, CultureInfo.InvariantCulture, out double duration))
-            {
-                Log($"Video duration parsed: {duration} seconds.");
-                return duration;
-            }
-            else
-            {
-                MessageBox.Show($"Unable to parse duration: '{output}'", "Parsing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log($"Unable to parse duration: '{output}'");
-                return 0; // Handle the error appropriately
-            }
+            return double.TryParse(output, NumberStyles.Float, CultureInfo.InvariantCulture, out double duration) ? duration : 0;
         }
 
         private void SplitVideo(string filePath, string outputFile, int startTime, int duration)
@@ -188,11 +196,18 @@ namespace ShortsMaker
 
             Log($"Video split completed: {outputFile}");
         }
-        
-        
+
         private void Log(string message)
         {
-            richTextBox1.AppendText($"{DateTime.Now}: {message}{Environment.NewLine}");
+            if (richTextBox1.InvokeRequired)
+            {
+                richTextBox1.Invoke(new Action(() => richTextBox1.AppendText($"{DateTime.Now}: {message}{Environment.NewLine}")));
+            }
+            else
+            {
+                richTextBox1.AppendText($"{DateTime.Now}: {message}{Environment.NewLine}");
+            }
+
             richTextBox1.ScrollToCaret();
         }
     }
