@@ -1,7 +1,11 @@
 # Youtube Long To ShortsMaker
 Youtube Long To Shorts Maker
 
-![image](https://github.com/user-attachments/assets/fd907e88-7b66-4a6e-b560-b4d917ec9849)
+![image](https://github.com/user-attachments/assets/3515da88-7866-4e6b-bff6-5ee863e31701)
+
+![image](https://github.com/user-attachments/assets/9aa454b9-8075-4cb4-baf2-16f3906a591e)
+
+
 
 
 
