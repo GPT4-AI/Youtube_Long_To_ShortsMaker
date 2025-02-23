@@ -1,168 +1,230 @@
+using System;
+using System.Windows.Forms;
+using MaterialSkin.Controls;
+
 namespace ShortsMaker
 {
     partial class MainForm
     {
-        private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.TextBox txtYoutubeUrl;
-        private System.Windows.Forms.Button btnDownloadVideo;
-        private System.Windows.Forms.TextBox txtVideoPath;
-        private System.Windows.Forms.Button btnBrowseVideo;
-        private System.Windows.Forms.TextBox txtOutroPath;
-        private System.Windows.Forms.Button btnBrowseOutro;
-        private System.Windows.Forms.TextBox txtClipsAmount;
-        private System.Windows.Forms.Button btnGenerateClips;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        private MaterialTextBox txtVideoPath;
+        private MaterialTextBox txtOutroPath;
+        private MaterialTextBox txtYoutubeUrl;
+        private MaterialButton btnBrowseVideo;
+        private MaterialButton btnDownloadVideo;
+        private MaterialButton btnGenerateClips;
+        private MaterialTextBox txtClipsAmount;
+        private RichTextBox richTextBox1;
 
         private void InitializeComponent()
         {
-            this.txtYoutubeUrl = new System.Windows.Forms.TextBox();
-            this.btnDownloadVideo = new System.Windows.Forms.Button();
-            this.txtVideoPath = new System.Windows.Forms.TextBox();
-            this.btnBrowseVideo = new System.Windows.Forms.Button();
-            this.txtOutroPath = new System.Windows.Forms.TextBox();
-            this.btnBrowseOutro = new System.Windows.Forms.Button();
-            this.txtClipsAmount = new System.Windows.Forms.TextBox();
-            this.btnGenerateClips = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
-
-            // txtYoutubeUrl
-            this.txtYoutubeUrl.Location = new System.Drawing.Point(12, 30);
-            this.txtYoutubeUrl.Name = "txtYoutubeUrl";
-            this.txtYoutubeUrl.Size = new System.Drawing.Size(300, 20);
-            this.txtYoutubeUrl.TabIndex = 0;
-
-            // btnDownloadVideo
-            this.btnDownloadVideo.Location = new System.Drawing.Point(318, 28);
-            this.btnDownloadVideo.Name = "btnDownloadVideo";
-            this.btnDownloadVideo.Size = new System.Drawing.Size(120, 23);
-            this.btnDownloadVideo.TabIndex = 1;
-            this.btnDownloadVideo.Text = "Download Video";
-            this.btnDownloadVideo.UseVisualStyleBackColor = true;
-            this.btnDownloadVideo.Click += new System.EventHandler(this.btnDownloadVideo_Click);
-
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            txtVideoPath = new MaterialTextBox();
+            txtOutroPath = new MaterialTextBox();
+            txtYoutubeUrl = new MaterialTextBox();
+            txtClipsAmount = new MaterialTextBox();
+            btnBrowseVideo = new MaterialButton();
+            btnDownloadVideo = new MaterialButton();
+            btnGenerateClips = new MaterialButton();
+            richTextBox1 = new RichTextBox();
+            btnBrowseOutro = new MaterialButton();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
             // txtVideoPath
-            this.txtVideoPath.Location = new System.Drawing.Point(12, 80);
-            this.txtVideoPath.Name = "txtVideoPath";
-            this.txtVideoPath.Size = new System.Drawing.Size(300, 20);
-            this.txtVideoPath.TabIndex = 2;
-
-            // btnBrowseVideo
-            this.btnBrowseVideo.Location = new System.Drawing.Point(318, 78);
-            this.btnBrowseVideo.Name = "btnBrowseVideo";
-            this.btnBrowseVideo.Size = new System.Drawing.Size(120, 23);
-            this.btnBrowseVideo.TabIndex = 3;
-            this.btnBrowseVideo.Text = "Browse Video";
-            this.btnBrowseVideo.UseVisualStyleBackColor = true;
-            this.btnBrowseVideo.Click += new System.EventHandler(this.btnBrowseVideo_Click);
-
+            // 
+            txtVideoPath.AnimateReadOnly = false;
+            txtVideoPath.BorderStyle = BorderStyle.None;
+            txtVideoPath.Depth = 0;
+            txtVideoPath.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            txtVideoPath.Hint = "Video Path";
+            txtVideoPath.LeadingIcon = null;
+            txtVideoPath.Location = new System.Drawing.Point(30, 80);
+            txtVideoPath.MaxLength = 50;
+            txtVideoPath.MouseState = MaterialSkin.MouseState.OUT;
+            txtVideoPath.Multiline = false;
+            txtVideoPath.Name = "txtVideoPath";
+            txtVideoPath.Size = new System.Drawing.Size(400, 50);
+            txtVideoPath.TabIndex = 0;
+            txtVideoPath.Text = "";
+            txtVideoPath.TrailingIcon = null;
+            // 
             // txtOutroPath
-            this.txtOutroPath.Location = new System.Drawing.Point(12, 130);
-            this.txtOutroPath.Name = "txtOutroPath";
-            this.txtOutroPath.Size = new System.Drawing.Size(300, 20);
-            this.txtOutroPath.TabIndex = 4;
-
-            // btnBrowseOutro
-            this.btnBrowseOutro.Location = new System.Drawing.Point(318, 128);
-            this.btnBrowseOutro.Name = "btnBrowseOutro";
-            this.btnBrowseOutro.Size = new System.Drawing.Size(120, 23);
-            this.btnBrowseOutro.TabIndex = 5;
-            this.btnBrowseOutro.Text = "Browse Outro";
-            this.btnBrowseOutro.UseVisualStyleBackColor = true;
-            this.btnBrowseOutro.Click += new System.EventHandler(this.btnBrowseOutro_Click);
-
+            // 
+            txtOutroPath.AnimateReadOnly = false;
+            txtOutroPath.BorderStyle = BorderStyle.None;
+            txtOutroPath.Depth = 0;
+            txtOutroPath.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            txtOutroPath.Hint = "Outro Path";
+            txtOutroPath.LeadingIcon = null;
+            txtOutroPath.Location = new System.Drawing.Point(30, 130);
+            txtOutroPath.MaxLength = 50;
+            txtOutroPath.MouseState = MaterialSkin.MouseState.OUT;
+            txtOutroPath.Multiline = false;
+            txtOutroPath.Name = "txtOutroPath";
+            txtOutroPath.Size = new System.Drawing.Size(400, 50);
+            txtOutroPath.TabIndex = 1;
+            txtOutroPath.Text = "";
+            txtOutroPath.TrailingIcon = null;
+            // 
+            // txtYoutubeUrl
+            // 
+            txtYoutubeUrl.AnimateReadOnly = false;
+            txtYoutubeUrl.BorderStyle = BorderStyle.None;
+            txtYoutubeUrl.Depth = 0;
+            txtYoutubeUrl.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            txtYoutubeUrl.Hint = "YouTube URL";
+            txtYoutubeUrl.LeadingIcon = null;
+            txtYoutubeUrl.Location = new System.Drawing.Point(30, 180);
+            txtYoutubeUrl.MaxLength = 50;
+            txtYoutubeUrl.MouseState = MaterialSkin.MouseState.OUT;
+            txtYoutubeUrl.Multiline = false;
+            txtYoutubeUrl.Name = "txtYoutubeUrl";
+            txtYoutubeUrl.Size = new System.Drawing.Size(400, 50);
+            txtYoutubeUrl.TabIndex = 2;
+            txtYoutubeUrl.Text = "";
+            txtYoutubeUrl.TrailingIcon = null;
+            // 
             // txtClipsAmount
-            this.txtClipsAmount.Location = new System.Drawing.Point(12, 180);
-            this.txtClipsAmount.Name = "txtClipsAmount";
-            this.txtClipsAmount.Size = new System.Drawing.Size(100, 20);
-            this.txtClipsAmount.TabIndex = 6;
-
+            // 
+            txtClipsAmount.AnimateReadOnly = false;
+            txtClipsAmount.BorderStyle = BorderStyle.None;
+            txtClipsAmount.Depth = 0;
+            txtClipsAmount.Font = new System.Drawing.Font("Roboto", 9.6F);
+            txtClipsAmount.Hint = "Number of Clips";
+            txtClipsAmount.LeadingIcon = null;
+            txtClipsAmount.Location = new System.Drawing.Point(30, 230);
+            txtClipsAmount.MaxLength = 50;
+            txtClipsAmount.MouseState = MaterialSkin.MouseState.OUT;
+            txtClipsAmount.Multiline = false;
+            txtClipsAmount.Name = "txtClipsAmount";
+            txtClipsAmount.Size = new System.Drawing.Size(169, 50);
+            txtClipsAmount.TabIndex = 3;
+            txtClipsAmount.Text = "5";
+            txtClipsAmount.TrailingIcon = null;
+            // 
+            // btnBrowseVideo
+            // 
+            btnBrowseVideo.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnBrowseVideo.Density = MaterialButton.MaterialButtonDensity.Default;
+            btnBrowseVideo.Depth = 0;
+            btnBrowseVideo.HighEmphasis = true;
+            btnBrowseVideo.Icon = null;
+            btnBrowseVideo.Location = new System.Drawing.Point(450, 80);
+            btnBrowseVideo.Margin = new Padding(4, 6, 4, 6);
+            btnBrowseVideo.MouseState = MaterialSkin.MouseState.HOVER;
+            btnBrowseVideo.Name = "btnBrowseVideo";
+            btnBrowseVideo.NoAccentTextColor = System.Drawing.Color.Empty;
+            btnBrowseVideo.Size = new System.Drawing.Size(126, 36);
+            btnBrowseVideo.TabIndex = 4;
+            btnBrowseVideo.Text = "Browse Video";
+            btnBrowseVideo.Type = MaterialButton.MaterialButtonType.Contained;
+            btnBrowseVideo.UseAccentColor = false;
+            btnBrowseVideo.Click += btnBrowseVideo_Click;
+            // 
+            // btnDownloadVideo
+            // 
+            btnDownloadVideo.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDownloadVideo.Density = MaterialButton.MaterialButtonDensity.Default;
+            btnDownloadVideo.Depth = 0;
+            btnDownloadVideo.HighEmphasis = true;
+            btnDownloadVideo.Icon = null;
+            btnDownloadVideo.Location = new System.Drawing.Point(450, 180);
+            btnDownloadVideo.Margin = new Padding(4, 6, 4, 6);
+            btnDownloadVideo.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDownloadVideo.Name = "btnDownloadVideo";
+            btnDownloadVideo.NoAccentTextColor = System.Drawing.Color.Empty;
+            btnDownloadVideo.Size = new System.Drawing.Size(148, 36);
+            btnDownloadVideo.TabIndex = 6;
+            btnDownloadVideo.Text = "Download Video";
+            btnDownloadVideo.Type = MaterialButton.MaterialButtonType.Contained;
+            btnDownloadVideo.UseAccentColor = false;
+            btnDownloadVideo.Click += btnDownloadVideo_Click;
+            // 
             // btnGenerateClips
-            this.btnGenerateClips.Location = new System.Drawing.Point(318, 178);
-            this.btnGenerateClips.Name = "btnGenerateClips";
-            this.btnGenerateClips.Size = new System.Drawing.Size(120, 23);
-            this.btnGenerateClips.TabIndex = 7;
-            this.btnGenerateClips.Text = "Generate Clips";
-            this.btnGenerateClips.UseVisualStyleBackColor = true;
-            this.btnGenerateClips.Click += new System.EventHandler(this.btnGenerateClips_Click);
-
+            // 
+            btnGenerateClips.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnGenerateClips.Density = MaterialButton.MaterialButtonDensity.Default;
+            btnGenerateClips.Depth = 0;
+            btnGenerateClips.HighEmphasis = true;
+            btnGenerateClips.Icon = null;
+            btnGenerateClips.Location = new System.Drawing.Point(450, 230);
+            btnGenerateClips.Margin = new Padding(4, 6, 4, 6);
+            btnGenerateClips.MouseState = MaterialSkin.MouseState.HOVER;
+            btnGenerateClips.Name = "btnGenerateClips";
+            btnGenerateClips.NoAccentTextColor = System.Drawing.Color.Empty;
+            btnGenerateClips.Size = new System.Drawing.Size(139, 36);
+            btnGenerateClips.TabIndex = 7;
+            btnGenerateClips.Text = "Generate Clips";
+            btnGenerateClips.Type = MaterialButton.MaterialButtonType.Contained;
+            btnGenerateClips.UseAccentColor = false;
+            btnGenerateClips.Click += btnGenerateClips_Click;
+            // 
             // richTextBox1
-            this.richTextBox1.Location = new System.Drawing.Point(12, 220);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(426, 150);
-            this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "";
-
-            // label1
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "YouTube URL";
-
-            // label2
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Video Path";
-
-            // label3
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Outro Path";
-
-            // label4
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 164);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Number of Clips";
-
+            // 
+            richTextBox1.Location = new System.Drawing.Point(30, 280);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new System.Drawing.Size(600, 189);
+            richTextBox1.TabIndex = 8;
+            richTextBox1.Text = "";
+            // 
+            // btnBrowseOutro
+            // 
+            btnBrowseOutro.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnBrowseOutro.Density = MaterialButton.MaterialButtonDensity.Default;
+            btnBrowseOutro.Depth = 0;
+            btnBrowseOutro.Font = new System.Drawing.Font("Tahoma", 9F);
+            btnBrowseOutro.HighEmphasis = true;
+            btnBrowseOutro.Icon = null;
+            btnBrowseOutro.Location = new System.Drawing.Point(450, 128);
+            btnBrowseOutro.Margin = new Padding(4, 6, 4, 6);
+            btnBrowseOutro.MouseState = MaterialSkin.MouseState.HOVER;
+            btnBrowseOutro.Name = "btnBrowseOutro";
+            btnBrowseOutro.NoAccentTextColor = System.Drawing.Color.Empty;
+            btnBrowseOutro.Size = new System.Drawing.Size(132, 36);
+            btnBrowseOutro.TabIndex = 5;
+            btnBrowseOutro.Text = "Browse Outro";
+            btnBrowseOutro.Type = MaterialButton.MaterialButtonType.Contained;
+            btnBrowseOutro.UseAccentColor = false;
+            btnBrowseOutro.Click += btnBrowseOutro_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.dfdffsf11;
+            pictureBox1.Location = new System.Drawing.Point(652, 80);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(251, 389);
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
             // MainForm
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 400);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.btnGenerateClips);
-            this.Controls.Add(this.txtClipsAmount);
-            this.Controls.Add(this.btnBrowseOutro);
-            this.Controls.Add(this.txtOutroPath);
-            this.Controls.Add(this.btnBrowseVideo);
-            this.Controls.Add(this.txtVideoPath);
-            this.Controls.Add(this.btnDownloadVideo);
-            this.Controls.Add(this.txtYoutubeUrl);
-            this.Name = "MainForm";
-            this.Text = "Shorts Maker";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            // 
+            ClientSize = new System.Drawing.Size(933, 500);
+            Controls.Add(pictureBox1);
+            Controls.Add(txtVideoPath);
+            Controls.Add(txtOutroPath);
+            Controls.Add(txtYoutubeUrl);
+            Controls.Add(txtClipsAmount);
+            Controls.Add(btnBrowseVideo);
+            Controls.Add(btnBrowseOutro);
+            Controls.Add(btnDownloadVideo);
+            Controls.Add(btnGenerateClips);
+            Controls.Add(richTextBox1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MaximumSize = new System.Drawing.Size(933, 500);
+            MinimizeBox = false;
+            MinimumSize = new System.Drawing.Size(933, 500);
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Shorts Maker";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+
+        private MaterialButton btnBrowseOutro;
+        private PictureBox pictureBox1;
     }
 }
